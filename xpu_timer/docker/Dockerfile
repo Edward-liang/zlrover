@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git wget gdb curl vim && \
 
 
 RUN mkdir -p /tmp && cd /tmp && git clone https://github.com/NVIDIA/nccl.git -b v2.21.5-1 --depth=1 && \
-    cd nccl && CUDARTLIB=cudart BUILDDIR=build-shared make -j && \
+    cd nccl && CUDARTLIB=cudart BUILDDIR=build-shared make && \
     NCCL_PATH=/opt/conda/lib/python3.11/site-packages/nvidia/nccl/lib/libnccl.so.2 && \
     if [[ -f ${NCCL_PATH} ]]; then rm -rf ${NCCL_PATH}; fi && \
     cp build-shared/lib/libnccl.so.2.21.5 ${NCCL_PATH} && \
