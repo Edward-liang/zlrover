@@ -1,0 +1,7 @@
+FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
+
+RUN apt-get update && apt-get install -y git wget gdb curl vim && \
+    apt-get clean
+
+
+RUN mkdir -p /tmp && cd /tmp && git clone https://github.com/NVIDIA/nccl.git -b v2.21.5-1 --depth=1
