@@ -1,0 +1,16 @@
+FROM registry.cn-hangzhou.aliyuncs.com/edward-liang/dlrover:V1.0
+
+ENV CUDARTLIB=cudart BUILDDIR=build-shared
+#RUN cd /tmp/nccl && make -j4
+#RUN NCCL_PATH=/opt/conda/lib/python3.11/site-packages/nvidia/nccl/lib/libnccl.so.2 && \
+#    if [[ -f ${NCCL_PATH} ]]; then rm -rf ${NCCL_PATH}; fi && \
+#    cp build-shared/lib/libnccl.so.2.21.5 ${NCCL_PATH} && \
+#    cd /tmp && rm -rf /tmp/nccl
+
+WORKDIR /build
+
+COPY . /build
+
+RUN cd /build && bash build.sh nvidia
+RUN pip install /build/dist_bin/py_xpu_timer-1.1+cu124-cp311-cp311-linux_x86_64.whl
+RUN pip install -r /build/demo/train_fsdp/requirements.txt
