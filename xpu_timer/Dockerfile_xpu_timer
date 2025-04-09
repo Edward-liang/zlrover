@@ -1,0 +1,12 @@
+FROM registry.cn-hangzhou.aliyuncs.com/edward-liang/dlrover:V1.0
+
+ENV CUDARTLIB=cudart BUILDDIR=build-shared
+
+WORKDIR /build
+
+COPY . /build
+
+RUN ls /build
+RUN cd /build/xpu_timer && bash build.sh nvidia
+RUN pip install /build/dist_bin/py_xpu_timer-1.1+cu124-cp311-cp311-linux_x86_64.whl
+RUN pip install -r /build/demo/train_fsdp/requirements.txt
