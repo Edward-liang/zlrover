@@ -9,4 +9,4 @@ COPY . /build
 RUN ls /build
 RUN cd /build && bash build.sh nvidia
 RUN pip install /build/dist_bin/py_xpu_timer-1.1+cu124-cp311-cp311-linux_x86_64.whl
-RUN pip install -r /build/demo/train_fsdp/requirements.txt
+# RUN pip install -r /build/demo/train_fsdp/requirements.txt
