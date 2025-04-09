@@ -9,7 +9,7 @@ ENV CUDARTLIB=cudart BUILDDIR=build-shared
 
 WORKDIR /build
 
-COPY . /build
+COPY ../../ /build
 
 RUN ls /build
 
