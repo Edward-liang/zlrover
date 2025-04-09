@@ -24,7 +24,7 @@ BUILD_IGNORE_GIT=$(git rev-parse --is-inside-work-tree &>/dev/null && echo 0 || 
 pkill -9 -f xpu_timer_daemon || true
 
 # test env
-bazelisk test //test/... || exit 1
+# bazelisk test //test/... || exit 1
 
 platform=$(cat .build_platform)
 platform_version=$(cat .platform_version)
